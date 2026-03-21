@@ -32,6 +32,8 @@ Aunque no generan el producto o servicio de forma directa, son indispensables pa
 
 El mapa de procesos es una herramienta fundamental para entender, analizar y mejorar el funcionamiento de cualquier organización. Al representar visualmente la relación entre procesos estratégicos, misionales y de apoyo, facilita la toma de decisiones y promueve una cultura de mejora continua.
 
+## Ejemplo
+
 <img width="1410" height="1700" alt="image" src="https://github.com/user-attachments/assets/b44f7519-4864-4096-ba8e-7b3a4eca155e" />
 
 
