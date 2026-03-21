@@ -7,7 +7,6 @@ CODE_ORGANIZATION: code-sena
 -->
 
 <h1 align="center">Jaminton Yeir Peña Guarnica</h1>
-
 <h2 align="center">ADSO-3413974</h2>
 
 <p align="center">
