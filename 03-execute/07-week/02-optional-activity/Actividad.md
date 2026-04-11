@@ -1,7 +1,7 @@
 # Ingeniería de Requerimientos — Proyecto MercaGo  
 **Basado en la app desarrollada en el proyecto grupal: MercaGo**
 
---
+
 
 ## 1. Introducción
 
@@ -9,7 +9,7 @@ La ingeniería de requerimientos es una fase fundamental dentro del desarrollo d
 
 En el presente trabajo se aplica el proceso completo de ingeniería de requerimientos tomando como base el proyecto **MercaGo**, una aplicación orientada a la comparación de precios en supermercados. Para ello, se parte de la recolección de información mediante un cuestionario, seguido del análisis de los datos obtenidos y la definición de los requerimientos del sistema.
 
---
+
 
 ## 2. Aplicación del instrumento
 
@@ -17,7 +17,7 @@ El instrumento de recolección de información utilizado fue un cuestionario cer
 
 El cuestionario fue aplicado de manera simulada a una muestra de **50 personas**, con el objetivo de identificar patrones de comportamiento y necesidades relacionadas con el proceso de compra en supermercados.
 
---
+
 
 ## 3. Resultados del cuestionario
 
@@ -102,7 +102,7 @@ El cuestionario fue aplicado de manera simulada a una muestra de **50 personas**
 - Web: 10%  
 - Indiferente: 5%  
 
---
+
 
 ## 4. Análisis de la información
 
@@ -120,7 +120,7 @@ En cuanto a la viabilidad del sistema, el 90% de los encuestados manifestó que 
 
 Finalmente, se observa que la mayoría de los usuarios prefiere el uso de dispositivos móviles, principalmente Android, lo que sugiere que la solución debe priorizar este tipo de plataforma.
 
---
+
 
 ## 5. Hallazgos principales
 
@@ -131,7 +131,7 @@ Finalmente, se observa que la mayoría de los usuarios prefiere el uso de dispos
 - Existe alta disposición al uso de una aplicación como solución.  
 - El acceso se realiza principalmente desde dispositivos móviles.  
 
---
+
 
 ## 6. Requerimientos funcionales
 
@@ -144,7 +144,7 @@ Finalmente, se observa que la mayoría de los usuarios prefiere el uso de dispos
 - RF7: El sistema debe permitir filtrar productos por supermercado.  
 - RF8: El sistema debe permitir el acceso desde dispositivos móviles.  
 
---
+
 
 ## 7. Requerimientos no funcionales
 
@@ -155,7 +155,7 @@ Finalmente, se observa que la mayoría de los usuarios prefiere el uso de dispos
 - RNF5: El sistema debe garantizar la seguridad de los datos del usuario.  
 - RNF6: El sistema debe ser escalable para soportar múltiples usuarios simultáneamente.  
 
---
+
 
 ## 8. Caso de uso: Comparar precios
 
@@ -172,7 +172,7 @@ Finalmente, se observa que la mayoría de los usuarios prefiere el uso de dispos
 **Resultado esperado:**  
 El usuario identifica el supermercado con el mejor precio disponible.  
 
---
+
 
 ## 9. Conclusión
 
