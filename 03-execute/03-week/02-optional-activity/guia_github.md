@@ -1,4 +1,4 @@
-# Guía de GitHub para Principiantes
+# Guía de GitHub
 
 ## Introducción
 
@@ -46,7 +46,7 @@ git --version
 
 Si muestra un número de versión, la instalación fue exitosa.
 
-### Configurar tu nombre y correo
+### Configurar nombre y correo
 
 Git necesita saber quién eres para asociar tu identidad a cada commit. Ejecuta estos dos comandos en la terminal, reemplazando los valores:
 
@@ -57,13 +57,13 @@ git config --global user.email "tuemail@ejemplo.com"
 
 Esta configuración se hace una sola vez y aplica a todos tus proyectos.
 
-### Crear una cuenta en GitHub
+### Crear cuenta en GitHub
 
 Ve a https://github.com y crea una cuenta gratuita. El correo que uses aquí no tiene que ser el mismo que configuraste en Git, pero es recomendable que coincidan.
 
 ---
 
-## 3. Crear un Repositorio
+## 3. Crear Repositorio
 
 Un repositorio es el punto de partida de cualquier proyecto en GitHub.
 
@@ -89,7 +89,7 @@ El comando `git init` crea una carpeta oculta llamada `.git` donde Git guarda to
 
 ---
 
-## 4. Clonar un Repositorio
+## 4. Clonar Repositorio
 
 Clonar significa descargar un repositorio de GitHub a tu computadora para trabajar en él.
 
@@ -101,7 +101,7 @@ Esto crea una carpeta en tu computadora con todos los archivos del proyecto y el
 
 ---
 
-## 5. El Flujo de Trabajo Diario
+## 5. Flujo de Trabajo Diario
 
 Este es el ciclo que repetirás cada vez que trabajes en un proyecto.
 
