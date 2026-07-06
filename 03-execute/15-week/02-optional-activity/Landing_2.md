@@ -1,46 +1,71 @@
-# Landing Page 2
+# Sistema de Gestión y Soporte a Incidencias (SGSI)
 
-# Draw.io
+Integrantes
 
-## Introducción
+Jaminton Peña
 
-Draw.io, actualmente conocido como diagrams.net, es una herramienta utilizada para crear diagramas de manera gráfica y sencilla. Es ampliamente empleada en el desarrollo de software debido a que permite representar procesos, estructuras y relaciones entre los diferentes componentes de un sistema.
+Julian Camargo
 
-Su interfaz basada en arrastrar y soltar facilita la elaboración de diagramas sin necesidad de conocimientos avanzados en diseño.
+Juan Horta
 
-## ¿Qué es Draw.io?
+## Arquitectura del Proyecto
 
-Draw.io es una aplicación para la creación de diagramas UML, diagramas de flujo, modelos entidad-relación, diagramas de red y otros esquemas utilizados durante el análisis y diseño de sistemas de información.
+El Sistema de Gestión y Soporte a Incidencias (SGSI) se desarrolla bajo una arquitectura cliente-servidor, permitiendo separar la interfaz de usuario de la lógica de negocio y del almacenamiento de la información. Esta organización facilita el mantenimiento, la escalabilidad y la administración del sistema.
 
-Puede utilizarse desde el navegador o instalarse como aplicación de escritorio, permitiendo guardar los proyectos en diferentes formatos.
+La comunicación entre el cliente y el servidor se realiza mediante solicitudes HTTP, permitiendo que los usuarios interactúen con el sistema desde un navegador web.
 
-## Características
+## Tecnologías Utilizadas
 
-- Interfaz gráfica intuitiva.
-- Herramienta gratuita.
-- Compatible con UML.
-- Exportación a PDF, PNG, SVG y XML.
-- Integración con servicios en la nube.
-- Amplia biblioteca de figuras y conectores.
+Durante el desarrollo del proyecto se emplean diferentes tecnologías para cada componente del sistema.
 
-## Ventajas
+Frontend
 
-- Fácil de aprender.
-- Permite documentar proyectos de software.
-- Reduce el tiempo de elaboración de diagramas.
-- Facilita el trabajo colaborativo.
-- Compatible con diferentes sistemas operativos.
+Responsable de la interfaz gráfica y de la interacción con el usuario.
 
-## Aplicación en el SGSI
+Backend
 
-Durante el desarrollo del Sistema de Gestión y Soporte a Incidencias (SGSI), Draw.io será utilizado para representar gráficamente la estructura del sistema mediante diagramas UML.
+Encargado de procesar las solicitudes, aplicar las reglas del negocio y gestionar la información del sistema.
 
-Los diagramas permitirán modelar los casos de uso, las clases y las relaciones existentes entre los diferentes componentes antes de iniciar la fase de implementación.
+Base de Datos
 
-## Importancia
+Almacena la información relacionada con usuarios, incidencias, categorías, prioridades, estados, comentarios y reportes.
 
-El uso de Draw.io facilita la documentación del proyecto, mejora la comunicación entre los integrantes del equipo y permite comprender con mayor facilidad el funcionamiento del sistema antes de desarrollar el software.
+Herramientas de Desarrollo
 
-## Conclusión
+Git y GitHub para el control de versiones.
 
-Draw.io constituye una herramienta fundamental durante el análisis y diseño del SGSI, ya que permite construir diagramas claros, organizados y fáciles de interpretar, contribuyendo al desarrollo ordenado del proyecto.
+Visual Studio Code como editor de código.
+
+Draw.io para la elaboración de diagramas UML.
+
+## Componentes del Sistema
+
+Durante el análisis del proyecto se identificaron los siguientes componentes principales:
+
+Gestión de Usuarios.
+
+Gestión de Incidencias.
+
+Gestión de Categorías.
+
+Gestión de Prioridades.
+
+Gestión de Estados.
+
+Gestión de Comentarios.
+
+Generación de Reportes.
+
+Administración del Sistema.
+
+## Organización del Proyecto
+
+El proyecto se encuentra dividido en módulos independientes que permiten mantener una estructura organizada y facilitar el desarrollo de nuevas funcionalidades sin afectar el funcionamiento general del sistema.
+
+Cada módulo cumple una responsabilidad específica y mantiene comunicación con los demás componentes cuando es necesario.
+
+## Observaciones
+
+La arquitectura propuesta permite que el SGSI sea un sistema modular, organizado y escalable.
+
+La separación entre la interfaz, la lógica de negocio y la base de datos facilita el mantenimiento del software y la incorporación de nuevas funcionalidades durante futuras etapas del proyecto.
