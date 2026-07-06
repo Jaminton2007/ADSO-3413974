@@ -1,88 +1,61 @@
-# Landing Page 3
+# Sistema de Gestión y Soporte a Incidencias (SGSI)
 
-# Diagrama de Clases UML
+Integrantes
 
-## Introducción
+Jaminton Peña
 
-El diagrama de clases es uno de los diagramas estructurales más importantes del Lenguaje Unificado de Modelado (UML). Su propósito es representar la estructura estática de un sistema mediante la identificación de las clases, sus atributos, métodos y las relaciones existentes entre ellas.
+Julian Camargo
 
-Este diagrama constituye la base para el diseño orientado a objetos, ya que permite comprender cómo se organiza la información antes de iniciar el desarrollo del software.
+Juan Horta
 
-## ¿Qué es un Diagrama de Clases?
+## Análisis del Sistema
 
-Un diagrama de clases representa los elementos principales que conforman un sistema de información y la forma en que estos interactúan entre sí.
+El análisis del Sistema de Gestión y Soporte a Incidencias (SGSI) permitió identificar los elementos principales que conforman el proyecto y la manera en que interactúan para garantizar una administración eficiente de las incidencias.
 
-Cada clase describe un conjunto de objetos con características y comportamientos comunes, permitiendo modelar la lógica del negocio de manera organizada y comprensible.
+A partir de este análisis fue posible definir las entidades, procesos y relaciones que servirán como base para el diseño del sistema y la elaboración de los diagramas UML.
 
-## Elementos Principales
+## Entidades Identificadas
 
-### Clase
+Durante el análisis del proyecto se identificaron las siguientes entidades principales:
 
-Representa una entidad del sistema con información y comportamiento propios.
+Usuario.
 
-### Atributos
+Incidencia.
 
-Son las características que describen el estado de una clase.
+Categoría.
 
-Ejemplos:
+Prioridad.
 
-- id
-- nombre
-- estado
-- fecha
-- descripción
+Estado.
 
-### Métodos
+Comentario.
 
-Representan las acciones que puede realizar una clase.
+Reporte.
 
-Ejemplos:
+Cada una de estas entidades representa un elemento esencial dentro del funcionamiento del sistema y será utilizada durante el modelado del software.
 
-- registrar()
-- consultar()
-- actualizar()
-- eliminar()
-- validar()
+## Relaciones del Sistema
 
-### Relaciones
+Las entidades del SGSI mantienen relaciones que permiten controlar el ciclo de vida de una incidencia.
 
-Permiten establecer la interacción entre las diferentes clases que conforman el sistema.
+Un usuario puede registrar una o varias incidencias.
 
-## Multiplicidad
+Cada incidencia pertenece a una categoría y posee una prioridad.
 
-La multiplicidad indica la cantidad de objetos que pueden relacionarse entre sí.
+Las incidencias cambian de estado durante su atención.
 
-Los valores más utilizados son:
+Los técnicos pueden agregar comentarios asociados a cada incidencia.
 
-- 1
-- 0..1
-- 1..*
-- 0..*
+La información registrada servirá como base para la generación de reportes administrativos.
 
-Estas relaciones permiten representar las reglas del negocio y la estructura del sistema de forma precisa.
+## Beneficios del Análisis
 
-## Aplicación en el SGSI
+El análisis realizado permite comprender la estructura general del sistema antes de iniciar el diseño detallado.
 
-En el Sistema de Gestión y Soporte a Incidencias (SGSI), el diagrama de clases permitirá representar entidades como:
+Además, facilita la construcción de diagramas UML, mejora la organización del proyecto y reduce posibles inconsistencias durante la implementación del software.
 
-- Usuario
-- Incidencia
-- Categoría
-- Prioridad
-- Estado
-- Comentario
-- Reporte
+## Observaciones
 
-Cada una de estas clases contendrá atributos, métodos y relaciones que describirán el funcionamiento interno del sistema.
+El análisis desarrollado mantiene coherencia con la documentación del proyecto SGSI y con la especificación de requisitos del sistema.
 
-## Beneficios
-
-- Facilita el diseño del software.
-- Organiza la estructura del sistema.
-- Mejora la comunicación entre los desarrolladores.
-- Sirve como base para la implementación.
-- Permite documentar el modelo del proyecto.
-
-## Conclusión
-
-El diagrama de clases constituye una herramienta fundamental durante el análisis y diseño del SGSI, ya que permite representar de manera gráfica la estructura del sistema, facilitando la comprensión de sus componentes y sus relaciones antes de iniciar la etapa de desarrollo.
+Las entidades identificadas constituyen la base para la elaboración del diagrama de clases, los casos de uso y los demás modelos UML que serán desarrollados en las siguientes etapas del proyecto.
