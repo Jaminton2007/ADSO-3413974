@@ -2,7 +2,7 @@ ANÁLISIS Y PROPUESTA DE MEJORAS
 
 Sistema Web para la Optimización del Proceso de Toma de Asistencia en el SENA
 
-Versión 1.1 — Revisión Técnica por el Equipo de Ingeniería de Software
+Versión 1.0 — Revisión Técnica por el Equipo de Ingeniería de Software
 
 1. NECESIDADES
 
@@ -71,6 +71,7 @@ OE04. Diseñar una interfaz de usuario que permita registrar la asistencia de to
 OE05. Desarrollar los módulos correspondientes al registro manual, registro mediante código QR, consulta de información, modificación de registros y generación de reportes.
 
 OE06. Verificar el correcto funcionamiento del sistema mediante pruebas que contemplen escenarios normales de uso, casos límite y situaciones de error.
+
 4. INGENIERÍA DE REQUERIMIENTOS — DESCRIPCIÓN
 
 DIAGNÓSTICO:
@@ -122,6 +123,7 @@ Recopilar información sobre las dificultades más frecuentes durante el registr
 IR04. Análisis del listado oficial de aprendices:
 
 Examinar la información oficial correspondiente a los aprendices de la ficha, identificando la estructura y los datos necesarios (nombre completo, número de documento y estado dentro de la ficha), con el propósito de definir adecuadamente el modelo de datos del sistema.
+
 6. REQUERIMIENTOS FUNCIONALES (REORGANIZADOS POR MÓDULOS)
 
 DIAGNÓSTICO:
@@ -193,6 +195,7 @@ RF-D05. El sistema deberá conservar un historial de todas las modificaciones re
 RF-D06. El sistema deberá registrar todos los intentos fallidos de autenticación o validación, almacenando la fecha, la hora, el tipo de error y los datos ingresados con fines de auditoría.
 
 RF-D07. Los registros modificados manualmente deberán identificarse visualmente mediante un indicador que informe que fueron editados dentro del panel de consulta.
+
 7. REQUERIMIENTOS NO FUNCIONALES
 
 DIAGNÓSTICO:
@@ -332,3 +335,435 @@ El instructor abre un checkpoint y posteriormente abandona el aula, dejando visi
 MITIGACIÓN:
 
 La responsabilidad de cerrar el checkpoint corresponde al instructor. Para esta versión del sistema no se recomienda implementar un cierre automático por tiempo, ya que podría interrumpir el proceso normal de registro de asistencia. Este escenario deberá documentarse como una responsabilidad operativa del usuario encargado del sistema.
+
+9 y 10. UI/UX Y USABILIDAD
+
+PRINCIPIOS DE DISEÑO DEL SISTEMA:
+
+- El tamaño mínimo de la fuente será de 16 px en todos los formularios utilizados por el aprendiz, garantizando una lectura cómoda desde dispositivos móviles.
+
+- La interfaz utilizará un fondo blanco y evitará elementos visuales innecesarios. Los estados de asistencia se diferenciarán mediante texto e iconografía, sin depender exclusivamente del color, con el fin de mejorar la accesibilidad.
+
+- El contador del código numérico de verificación deberá mostrarse de forma visible mediante un valor numérico, complementando cualquier indicador gráfico, para que el aprendiz conozca el tiempo restante antes de la expiración del código.
+
+- Todos los mensajes de error deberán presentarse de manera clara, indicando la causa del problema y la acción que debe realizar el usuario para solucionarlo.
+
+FLUJO DEL INSTRUCTOR:
+
+El panel principal del instructor deberá mostrar en una única pantalla la siguiente información:
+
+- Estado del checkpoint activo (tipo, hora de apertura y estado: Abierto o Cerrado).
+
+- Código numérico de verificación vigente acompañado del contador con el tiempo restante para su actualización.
+
+- Listado completo de aprendices con su estado de asistencia actualizado en tiempo real (Sin registrar, Asistió, Tarde o Ausente).
+
+- Indicador de progreso mostrando la cantidad de registros realizados respecto al total de aprendices de la ficha.
+
+FLUJO DEL APRENDIZ (MÁXIMO TRES PANTALLAS):
+
+Pantalla 1 — Validación de identidad
+
+Campo: Nombre completo
+
+Campo: Número de documento
+
+Botón: "Validar"
+
+Mensaje de error (cuando corresponda): descripción clara del inconveniente presentado.
+
+Pantalla 2 — Verificación mediante código temporal
+
+Campo: Código numérico
+
+Contador visible: "El código cambia en X segundos"
+
+Botón: "Confirmar asistencia"
+
+Mensaje de error (cuando corresponda): descripción específica del problema detectado.
+
+Pantalla 3 — Confirmación del registro
+
+Mensaje: "Asistencia registrada correctamente."
+
+Información mostrada:
+
+- Nombre del aprendiz.
+
+- Tipo de checkpoint registrado.
+
+- Hora exacta del registro.
+
+MENSAJES DE ERROR DEFINIDOS:
+
+- "No se encontró ningún aprendiz con ese documento en esta ficha."
+
+- "Los datos ingresados no corresponden al mismo aprendiz."
+
+- "Tu asistencia ya fue registrada en este checkpoint."
+
+- "El código ha expirado. Solicita el código vigente e inténtalo nuevamente."
+
+- "El código ingresado no es válido."
+
+- "Este checkpoint ya no se encuentra disponible para registrar asistencia."
+
+- "Se han realizado demasiados intentos fallidos. Espera 30 segundos antes de intentarlo nuevamente."
+
+- "Error de conexión. Verifica tu red e inténtalo nuevamente."
+
+11. CASOS DE USO
+
+ACTORES:
+
+- Instructor
+
+- Aprendiz
+
+CASOS DE USO DEL INSTRUCTOR:
+
+UC01. Abrir checkpoint.
+
+UC02. Cerrar checkpoint.
+
+UC03. Visualizar el estado de asistencia en tiempo real.
+
+UC04. Modificar manualmente un registro de asistencia.
+
+UC05. Consultar el historial de asistencia por fecha.
+
+UC06. Buscar un aprendiz mediante nombre o documento.
+
+UC07. Generar y exportar reportes.
+
+CASOS DE USO DEL APRENDIZ:
+
+UC08. Escanear el código QR y acceder al formulario de registro.
+
+UC09. Ingresar la información de identificación.
+
+UC10. Ingresar el código numérico de verificación.
+
+UC11. Recibir la confirmación del registro exitoso.
+
+RELACIONES ENTRE CASOS DE USO:
+
+UC08 <<include>> UC09
+
+El escaneo del código QR conduce obligatoriamente al formulario de validación de identidad.
+
+UC09 <<include>> UC10
+
+La solicitud del código numérico únicamente se realiza cuando la identidad del aprendiz ha sido validada correctamente.
+
+UC10 <<include>> UC11
+
+La confirmación del registro solo se presenta cuando el código numérico es válido y continúa vigente.
+
+FLUJOS ALTERNATIVOS (<<extend>>):
+
+UC09 <<extend>> "Identidad no reconocida"
+
+El sistema informa que los datos ingresados no corresponden a ningún aprendiz registrado y finaliza el proceso.
+
+UC09 <<extend>> "Registro duplicado"
+
+El sistema informa que el aprendiz ya registró asistencia en el checkpoint activo.
+
+UC10 <<extend>> "Código expirado"
+
+El sistema informa que el código de verificación ya no es válido y solicita utilizar el código vigente.
+
+UC10 <<extend>> "Código incorrecto"
+
+El sistema informa que el código ingresado es incorrecto y registra el intento fallido.
+
+UC10 <<extend>> "Tres intentos fallidos"
+
+El sistema bloquea temporalmente nuevos intentos durante treinta segundos.
+
+UC04 <<extend>> "Registro modificado"
+
+El sistema registra la modificación dentro del historial de auditoría e identifica visualmente el registro como editado.
+
+DESCRIPCIÓN DE LOS CASOS DE USO PRINCIPALES:
+
+UC01 — Abrir checkpoint
+
+Actor: Instructor
+
+Precondición:
+
+No debe existir un checkpoint abierto del mismo tipo durante la jornada de formación.
+
+Flujo principal:
+
+1. El instructor selecciona el tipo de checkpoint (Inicio, Regreso de receso o Finalización).
+
+2. El sistema genera automáticamente el código QR y el primer código numérico de verificación.
+
+3. El sistema muestra el panel principal con el checkpoint activo, el código QR y el código numérico vigente.
+
+Postcondición:
+
+El checkpoint queda abierto y disponible para que los aprendices registren su asistencia.
+
+UC08 al UC11 — Registro de asistencia mediante código QR
+
+Actor: Aprendiz
+
+Precondición:
+
+Debe existir un checkpoint activo con estado "Abierto".
+
+Flujo principal:
+
+1. El aprendiz escanea el código QR desde su dispositivo móvil.
+
+2. El sistema presenta el formulario para ingresar nombre completo y número de documento.
+
+3. El aprendiz diligencia la información solicitada y envía el formulario.
+
+4. El sistema valida la identidad del aprendiz.
+
+5. Si la validación es satisfactoria, el sistema solicita el código numérico vigente.
+
+6. El aprendiz ingresa el código de verificación.
+
+7. El sistema valida el código y registra la asistencia.
+
+8. El sistema presenta la confirmación del registro.
+
+Postcondición:
+
+La asistencia queda registrada y el panel del instructor actualiza automáticamente el estado del aprendiz como "Asistió".
+
+12. DIAGRAMAS UML — MODELO DE CLASES MEJORADO
+
+DIAGNÓSTICO:
+
+El diagrama de clases original contempla únicamente las clases Instructor, Aprendiz y Asistencia, dejando por fuera elementos fundamentales para el funcionamiento del sistema. La entidad Checkpoint, responsable de gestionar el proceso de toma de asistencia, no está representada, al igual que las estructuras necesarias para administrar los códigos de verificación, la auditoría de modificaciones y el registro de intentos fallidos. Estas omisiones limitan la representación del comportamiento real del sistema.
+
+CLASES PROPUESTAS:
+
+Clase: Instructor
+
+Atributos:
+
+- idInstructor
+
+- nombre
+
+Métodos:
+
++ abrirCheckpoint(tipo): Checkpoint
+
++ cerrarCheckpoint(idCheckpoint): void
+
++ modificarAsistencia(idRegistro, nuevoEstado): void
+
++ consultarHistorial(fecha): List<RegistroAsistencia>
+
++ generarReporte(fecha, formato): Archivo
+
+Clase: Checkpoint
+
+Atributos:
+
+- idCheckpoint
+
+- tipo (INICIO / RECESO / FINALIZACIÓN)
+
+- fecha
+
+- horaApertura
+
+- horaCierre
+
+- estado (ABIERTO / CERRADO)
+
+- tokenQR
+
+Métodos:
+
++ generar(): void
+
++ cerrar(): void
+
++ generarCodigoNumerico(): CodigoVerificacion
+
+Clase: CodigoVerificacion
+
+Atributos:
+
+- idCodigo
+
+- valor
+
+- generadoEn (timestamp)
+
+- expiraEn (generadoEn + 20 segundos)
+
+Métodos:
+
++ esValido(): boolean
+
++ generar(): String
+
+Clase: Aprendiz
+
+Atributos:
+
+- idAprendiz
+
+- nombre
+
+- documento
+
+- estado (ACTIVO / INACTIVO)
+
+Métodos:
+
++ validarIdentidad(nombre, documento): boolean
+
+Clase: RegistroAsistencia
+
+Atributos:
+
+- idRegistro
+
+- fechaHora
+
+- estadoAsistencia (ASISTIÓ / TARDE / AUSENTE)
+
+- fuenteRegistro (QR / MANUAL)
+
+- dispositivoIP
+
+- fueEditado (boolean)
+
+Métodos:
+
++ guardar(): void
+
++ editar(nuevoEstado, descripcion): void
+
+Clase: ModificacionRegistro
+
+Atributos:
+
+- idModificacion
+
+- fechaHora
+
+- estadoAnterior
+
+- estadoNuevo
+
+- descripcionCambio
+
+Clase: IntentoPendiente
+
+Atributos:
+
+- idIntento
+
+- fechaHora
+
+- documentoIngresado
+
+- tipoError
+
+- dispositivoIP
+
+RELACIONES ENTRE CLASES:
+
+Instructor — genera → Checkpoint (1 a muchos)
+
+Checkpoint — contiene → CodigoVerificacion (1 a muchos, generación rotativa)
+
+Checkpoint — contiene → RegistroAsistencia (1 a muchos)
+
+Checkpoint — contiene → IntentoPendiente (1 a muchos)
+
+Aprendiz — posee → RegistroAsistencia (1 a muchos)
+
+RegistroAsistencia — registra → ModificacionRegistro (1 a muchos)
+
+13. FLUJO DEL SISTEMA
+
+FLUJO DE REGISTRO EXITOSO (CAMINO FELIZ):
+
+1. El instructor abre un checkpoint correspondiente al inicio de la jornada.
+
+2. El sistema genera automáticamente el código QR y el primer código numérico de verificación con una vigencia de veinte segundos.
+
+3. El instructor proyecta o pone a disposición de los aprendices el código QR generado.
+
+4. El aprendiz escanea el código QR utilizando su dispositivo móvil.
+
+5. El sistema presenta el formulario para la validación de identidad.
+
+6. El aprendiz ingresa su nombre completo y número de documento.
+
+7. El sistema realiza las siguientes validaciones:
+
+   a. Verifica que el documento pertenezca a un aprendiz registrado en la ficha activa.
+
+   b. Comprueba que el nombre ingresado corresponda al documento suministrado.
+
+   c. Confirma que el aprendiz no haya registrado previamente su asistencia en el checkpoint activo.
+
+8. Si todas las validaciones son correctas, el sistema solicita el código numérico de verificación y muestra el contador con el tiempo restante.
+
+9. El aprendiz ingresa el código numérico vigente.
+
+10. El sistema verifica:
+
+    a. Que el código aún no haya expirado.
+
+    b. Que el código corresponda al generado para el checkpoint activo.
+
+11. Una vez superadas todas las validaciones, el sistema registra la asistencia indicando la fecha, la hora y el tipo de checkpoint.
+
+12. El sistema presenta al aprendiz un mensaje de confirmación que incluye su nombre, el checkpoint registrado y la hora exacta del registro.
+
+13. El panel del instructor actualiza automáticamente el estado del aprendiz, mostrándolo como "Asistió".
+
+TABLA DE MANEJO DE ERRORES:
+
+Situación                          | Respuesta del sistema
+-----------------------------------|---------------------------------------------------------
+Documento no registrado            | "No se encontró ningún aprendiz con ese documento en esta ficha."
+Nombre y documento no coinciden    | "Los datos ingresados no corresponden al mismo aprendiz."
+Registro duplicado                 | "Tu asistencia ya fue registrada en este checkpoint."
+Código numérico expirado           | "El código ha expirado. Solicita el código vigente e inténtalo nuevamente."
+Código numérico incorrecto         | "El código ingresado no es válido."
+Checkpoint cerrado                 | "Este checkpoint ya no está disponible para registrar asistencia."
+Tres intentos fallidos             | Se aplica un tiempo de espera de 30 segundos y se registra el evento en el historial de auditoría.
+Pérdida de conexión                | "Error de conexión. Verifica tu red e inténtalo nuevamente." (sin perder la información ingresada).
+Error interno del servidor         | "Ocurrió un error inesperado. Inténtalo nuevamente o comunícate con el instructor."
+
+FLUJO DE CIERRE DEL CHECKPOINT:
+
+1. El instructor selecciona la opción "Cerrar checkpoint".
+
+2. El sistema informa la cantidad de aprendices que aún no registran asistencia mediante el mensaje:
+
+   "X aprendices aún no tienen registro en este checkpoint. ¿Desea confirmar el cierre?"
+
+3. El instructor confirma la operación.
+
+4. El sistema registra la hora de cierre y cambia el estado del checkpoint a CERRADO.
+
+5. El código QR deja de estar disponible para nuevos registros.
+
+6. Los aprendices que no registraron asistencia durante el checkpoint son marcados automáticamente con estado AUSENTE.
+
+7. Si posteriormente el instructor requiere modificar alguno de estos registros, podrá hacerlo manualmente, quedando el cambio identificado como "Registro tardío manual" y almacenado dentro del historial de auditoría.
+
+Fin del documento de análisis — Versión 1.1
+
+Proyecto: Sistema Web de Toma de Asistencia SENA
+
+Ficha: ADSO 3413974
